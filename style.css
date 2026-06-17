@@ -1,0 +1,337 @@
+/* ==========================================
+   1. CORE STYLING: NEO-BRUTALISM LIGHT MODE
+   ========================================== */
+:root {
+    --bg-page: #fdfdfd;
+    --card-bg: #ffffff;
+    --black: #000000;
+    --white: #ffffff;
+    --accent-enc: #FF5C00;
+    --accent-dec: #8B5CF6;
+    --success: #10b981;
+    --thick-border: 3px solid #000000;
+    --hard-shadow: 6px 6px 0px #000000;
+    --hard-shadow-active: 2px 2px 0px #000000;
+}
+
+* {
+    box-sizing: border-box;
+    cursor: crosshair;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--bg-page);
+    color: var(--black);
+    margin: 0;
+    padding: 0 0 40px 0;
+    font-weight: 500;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==========================================
+   2. NAVBAR BRUTAL & INFO MODAL
+   ========================================== */
+.brutal-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #C0F7FE;
+    border-bottom: var(--thick-border);
+    padding: 15px 40px;
+    margin-bottom: 40px;
+}
+
+.nav-logo {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--black);
+    letter-spacing: -0.05em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border: var(--thick-border);
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: var(--white);
+    box-shadow: 4px 4px 0px var(--black);
+    transform: translate(-2px, -2px);
+}
+
+/* ==========================================
+   3. HEADER STYLING
+   ========================================== */
+header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 30px;
+    background-color: var(--white);
+    border: var(--thick-border);
+    box-shadow: var(--hard-shadow);
+}
+
+header h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -0.05em;
+    line-height: 1;
+}
+
+header h1 .accent-p { color: var(--accent-enc); }
+header h1 .accent-s { color: var(--accent-dec); }
+
+header p {
+    font-size: 1.3rem;
+    margin-top: 15px;
+    margin-bottom: 0;
+    color: var(--black);
+    font-weight: 700;
+}
+
+header .modul-pertemuan {
+    display: inline-block;
+    margin-top: 10px;
+    background: #000;
+    color: #fff;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+
+.tab-container {
+    max-width: 800px; /* Membatasi lebar form agar proporsional dan fokus */
+    margin: 0 auto;   /* Membuat posisinya pas di tengah layar */
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: var(--thick-border);
+    box-shadow: var(--hard-shadow);
+    padding: 40px;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 15px;
+    border-bottom: var(--thick-border);
+}
+
+.card-encode::before { background-color: var(--accent-enc); }
+.card-decode::before { background-color: var(--accent-dec); }
+
+h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-top: 10px;
+    margin-bottom: 30px;
+    letter-spacing: -0.03em;
+}
+
+/* ==========================================
+   5. FORM INPUTS & BUTTONS
+   ========================================== */
+.form-group { margin-bottom: 25px; }
+
+label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 15px 20px;
+    border: var(--thick-border);
+    background-color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    color: var(--black);
+    font-weight: 500;
+    border-radius: 0;
+}
+
+input[type="text"]:focus, textarea:focus {
+    outline: none;
+    background-color: #f0f0f0;
+}
+
+textarea { resize: vertical; height: 100px; }
+
+input[type="file"] {
+    width: 100%; padding: 15px;
+    border: var(--thick-border);
+    background-color: var(--white);
+    font-weight: bold; cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    background: #000; color: #fff;
+    border: none; padding: 8px 16px;
+    text-transform: uppercase; font-family: 'Space Grotesk', sans-serif;
+    font-weight: bold; margin-right: 10px;
+}
+
+button {
+    display: block; font-family: 'Unbounded', sans-serif;
+    font-size: 1.1rem; text-transform: uppercase; color: var(--black);
+    border: var(--thick-border); padding: 20px; width: 100%; font-weight: 800;
+    transition: all 0.1s ease; box-shadow: var(--hard-shadow);
+}
+
+button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--black);
+}
+
+button:active {
+    transform: translate(4px, 4px);
+    box-shadow: var(--hard-shadow-active);
+}
+
+.btn-encode { background-color: var(--accent-enc); }
+.btn-decode { background-color: var(--accent-dec); }
+
+/* ==========================================
+   6. SHARE BUTTONS (NILAI TAMBAH DOSEN)
+   ========================================== */
+.share-brutal-container { display: flex; gap: 15px; margin-top: 15px; }
+
+.btn-wa { background-color: #25D366; padding: 12px; font-size: 0.9rem; }
+.btn-email { background-color: #FFDE59; padding: 12px; font-size: 0.9rem; }
+
+/* ==========================================
+   7. OUTPUT AREA & IMAGES
+   ========================================== */
+.output-container {
+    margin-top: 30px; border-top: var(--thick-border); padding-top: 20px;
+}
+
+.output-title {
+    font-family: 'Unbounded', sans-serif; font-size: 1.2rem;
+    text-transform: uppercase; margin-bottom: 10px; color: var(--success);
+}
+
+#extractedResult {
+    padding: 15px; background-color: var(--accent-dec); color: #fff;
+    font-family: 'Courier New', Courier, monospace; font-weight: bold;
+    font-size: 1.2rem; border: var(--thick-border); word-break: break-all;
+}
+
+img { max-width: 100%; height: auto; margin-top: 15px; border: var(--thick-border); }
+
+/* ==========================================
+   8. MODALS & LOADING OVERLAY
+   ========================================== */
+#loadingOverlay, #brutalAlertOverlay, #infoModalOverlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(253, 253, 253, 0.85); display: none;
+    justify-content: center; align-items: center; z-index: 10000;
+    backdrop-filter: blur(4px);
+}
+
+#loadingOverlay { flex-direction: column; }
+
+.brutal-spinner { position: relative; width: 100px; height: 100px; }
+.brutal-spinner::before, .brutal-spinner::after {
+    content: ''; position: absolute; border: 5px solid var(--black);
+    top: 0; left: 0; right: 0; bottom: 0;
+    animation: pulseBrutal 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.brutal-spinner::after { animation-delay: 0.6s; }
+
+.loading-text {
+    font-family: 'Unbounded', sans-serif; margin-top: 20px;
+    font-size: 1.5rem; text-transform: uppercase; color: var(--black); font-weight: 800;
+}
+
+@keyframes pulseBrutal {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+#brutalAlertBox, #infoModalBox {
+    border: var(--thick-border); box-shadow: 12px 12px 0px var(--black);
+    padding: 40px; width: 90%; animation: popIn 0.2s forwards cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#brutalAlertBox { background-color: #FFDE59; max-width: 450px; text-align: center; }
+#infoModalBox { background-color: #FE90E8; max-width: 600px; }
+
+@keyframes popIn { from { transform: scale(0.9); } to { transform: scale(1); } }
+
+#brutalAlertTitle, .info-title {
+    font-family: 'Unbounded', sans-serif; color: var(--black); margin-top: 0;
+}
+#brutalAlertTitle { font-size: 2rem; color: #FF3131; margin-bottom: 15px; text-transform: uppercase; }
+.info-title { font-size: 1.8rem; margin-bottom: 20px; }
+
+#brutalAlertMessage { font-size: 1.2rem; font-weight: 700; margin-bottom: 30px; color: var(--black); }
+.info-content { font-size: 1.1rem; font-weight: 600; margin-bottom: 30px; line-height: 1.6; }
+
+.btn-close-alert, .btn-close-info { background-color: var(--white); padding: 15px; }
+
+/* ==========================================
+   9. LIVE CAPACITY METER LOGIC
+   ========================================== */
+.capacity-container {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: var(--white); 
+    border: var(--thick-border);
+    box-shadow: 4px 4px 0px var(--black);
+}
+
+.capacity-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--black);
+}
+
+.capacity-bar-bg {
+    width: 100%;
+    height: 25px;
+    background-color: #e5e7eb;
+    border: 2px solid var(--black);
+    position: relative;
+    overflow: hidden;
+}
+
+.capacity-bar-fill {
+    height: 100%;
+    background-color: #25D366; /* Hijau Aman */
+    width: 0%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}

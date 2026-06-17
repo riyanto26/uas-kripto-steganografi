@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAS KRIPTOGRAFI: KELOMPOK 5 (NEO-BRUTALISM)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Unbounded:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="brutal-navbar">
+    <div class="nav-logo">KELOMPOK_5.EXE</div>
+    <div class="nav-links">
+        <a href="#" class="nav-item active" id="navEncode" onclick="switchTab('encode')">ENCODE</a>
+        <a href="#" class="nav-item" id="navDecode" onclick="switchTab('decode')">DECODE</a>
+        <a href="#" class="nav-item" onclick="showInfoModal()">CARA KERJA</a>
+        <a href="#" class="nav-item" onclick="showBrutalAlert('Tim Pengembang:\n1. Riyanto Febrian\n2. Nur Azizah\n3. Ahmad Mutoharul Janan')">TENTANG KAMI</a>
+    </div>
+</nav>
+
+<div id="loadingOverlay">
+    <div class="brutal-spinner"></div>
+    <div class="loading-text" id="loadingMessage">PROSES ENKRIPSI...</div>
+</div>
+
+<div class="container">
+    <header>
+        <div class="modul-pertemuan">PROJECT UAS KRIPTOGRAFI: KELOMPOK 5 (BETA)</div>
+        <h1><span class="accent-p">DATA HIDING</span> + <span class="accent-s">CRYPTO</span> SYSTEM</h1>
+        <p>Kombinasi Vigenere Cipher & Steganografi LSB (Least Significant Bit)</p>
+    </header>
+
+    <div class="tab-container">
+        
+        <div class="card card-encode" id="encodeSection">
+            <h2>1. Encode & Sembunyikan</h2>
+            <div class="form-group">
+                <label>Pesan Rahasia (Plaintext):</label>
+                <textarea id="plainText" placeholder="Ketik pesan yang ingin disembunyikan di sini..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Kunci Vigenere (Hanya Huruf):</label>
+                <input type="text" id="encKey" placeholder="Contoh: KAMPUS, RYN, UAS">
+            </div>
+            <div class="form-group">
+                <label>Upload Gambar Cover (.PNG):</label>
+                <input type="file" id="coverImage" accept="image/png">
+            </div>
+            
+            <div class="capacity-container" id="capacityContainer" style="display: none;">
+                <div class="capacity-header">
+                    <span>KAPASITAS GAMBAR:</span>
+                    <span id="capacityText" style="font-family: 'Courier New', monospace; font-size: 1.1rem;">0 / 0 Karakter</span>
+                </div>
+                <div class="capacity-bar-bg">
+                    <div class="capacity-bar-fill" id="capacityBar"></div>
+                </div>
+            </div>
+            
+            <button onclick="triggerEncode()" class="btn-encode">Gas Encrypt & Sisipkan!</button>
+            
+            <div id="encOutputArea" class="output-container" style="display:none;">
+                <h3 class="output-title" style="color:var(--accent-enc)">✔ Stego-Image Berhasil Dibuat!</h3>
+                <img id="stegoResultImg" alt="Hasil Stego Image">
+                <br><br>
+                <a id="downloadLink" download="stego_uas_kelompok5.png"><button style="background-color: var(--white); border-color: var(--accent-enc); box-shadow: var(--hard-shadow);">Download Gambar Hasil</button></a>
+                
+                <div class="share-brutal-container">
+                    <button onclick="shareWhatsApp()" class="btn-wa">KIRIM VIA WA</button>
+                    <button onclick="shareEmail()" class="btn-email">KIRIM VIA EMAIL</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-decode" id="decodeSection" style="display:none;">
+            <h2>2. Ekstrak & Baca Pesan</h2>
+            <div class="form-group">
+                <label>Upload Gambar Stego (.PNG):</label>
+                <input type="file" id="stegoImage" accept="image/png">
+            </div>
+            <div class="form-group">
+                <label>Kata Kunci Vigenere (Harus Sama):</label>
+                <input type="text" id="decKey" placeholder="Contoh: KAMPUS, RYN, UAS">
+            </div>
+            <button onclick="triggerDecode()" class="btn-decode">Ekstrak Teks Rahasia!</button>
+            
+            <div id="decOutputArea" class="output-container" style="display:none;">
+                <h3 class="output-title" style="color:var(--accent-dec)">✔ Pesan Berhasil Diekstrak!</h3>
+                <div id="extractedResult"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<canvas id="canvas" style="display:none;"></canvas>
+
+<div id="brutalAlertOverlay">
+    <div id="brutalAlertBox">
+        <h3 id="brutalAlertTitle">🚨 PERHATIAN!</h3>
+        <p id="brutalAlertMessage">Pesan error di sini.</p>
+        <button onclick="closeBrutalAlert()" class="btn-close-alert">OKE, PAHAM!</button>
+    </div>
+</div>
+
+<div id="infoModalOverlay">
+    <div id="infoModalBox">
+        <h3 class="info-title">💡 BAGAIMANA INI BEKERJA?</h3>
+        <div class="info-content">
+            <p><strong>Lapis 1 (Vigenere Cipher):</strong> Pesan asli diacak menggunakan algoritma kriptografi klasik tersubstitusi polyalphabetic menggunakan kata kunci.</p>
+            <p><strong>Lapis 2 (Steganografi LSB):</strong> Teks yang telah diacak (*ciphertext*) diubah ke bentuk biner, lalu disisipkan secara permanen ke bit terakhir (*Least Significant Bit*) pada setiap pixel array warna gambar cover.</p>
+        </div>
+        <button onclick="closeInfoModal()" class="btn-close-info">TUTUP INFORMASI</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
